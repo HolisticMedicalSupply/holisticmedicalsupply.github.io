@@ -91,7 +91,7 @@
             text-align: center;
             font-size: 1.3em;
             color: #7f8c8d;
-            margin-bottom: 50px;
+            margin-bottom: 25px;
         }
         
         svg {
