@@ -98,6 +98,14 @@
             width: 100%;
             height: 900px;
             display: block;
+            max-width: 100%;
+            /* Preserve aspect ratio */
+            touch-action: pan-x pan-y;
+        }
+        
+        /* Prevent double-tap zoom on buttons and nodes */
+        .node, .demo-button, .close-btn {
+            touch-action: manipulation;
         }
         
         /* Stage Labels */
@@ -472,6 +480,30 @@
             box-shadow: 0 15px 50px rgba(39, 174, 96, 0.5);
         }
         
+        /* Mobile orientation hint */
+        .orientation-hint {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            z-index: 2000;
+            text-align: center;
+            max-width: 90%;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @media (max-width: 768px) and (orientation: portrait) {
+            .orientation-hint {
+                display: block;
+            }
+        }
+        
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
@@ -508,11 +540,73 @@
         @media (max-width: 1400px) {
             svg { height: 700px; }
             .info-panel { width: 450px; right: -500px; }
+            .container { max-width: 100%; }
+            .workflow-container { padding: 40px 30px; }
+        }
+        
+        /* Medium screens (768px - 1400px) - Scale up SVG text for better readability */
+        @media (max-width: 1400px) and (min-width: 768px) {
+            /* Node titles - main labels */
+            .node text[font-size="20"] {
+                font-size: 24px;
+            }
+            
+            .node text[font-size="22"] {
+                font-size: 26px;
+            }
+            
+            .node text[font-size="18"] {
+                font-size: 22px;
+            }
+            
+            /* Node icons */
+            .node text[font-size="28"] {
+                font-size: 34px;
+            }
+            
+            .node text[font-size="32"] {
+                font-size: 38px;
+            }
+            
+            .node text[font-size="26"] {
+                font-size: 30px;
+            }
+            
+            /* Node descriptions and details */
+            .node text[font-size="14"] {
+                font-size: 17px;
+            }
+            
+            .node text[font-size="13"] {
+                font-size: 16px;
+            }
+            
+            .node text[font-size="12"] {
+                font-size: 15px;
+            }
+            
+            /* Stage labels */
+            .stage-label {
+                font-size: 26px;
+            }
+            
+            .stage-sublabel {
+                font-size: 19px;
+            }
         }
         
         @media (max-width: 1024px) {
-            .workflow-container { padding: 30px; }
-            svg { height: 600px; }
+            .header h1 { font-size: 2.5em; }
+            .header p { font-size: 1.1em; }
+            
+            .workflow-container { 
+                padding: 30px 20px; 
+            }
+            
+            svg { 
+                height: 600px; 
+            }
+            
             .info-panel {
                 width: 100%;
                 right: -100%;
@@ -520,6 +614,277 @@
                 top: 0;
                 transform: none;
                 max-height: 100vh;
+                padding: 25px;
+            }
+            
+            .notification {
+                min-width: 90%;
+                max-width: 90%;
+                padding: 20px 25px;
+                top: 80px;
+            }
+            
+            .notification-header {
+                font-size: 1.3em;
+            }
+            
+            .notification-body {
+                font-size: 1em;
+            }
+            
+            .controls {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .demo-button {
+                width: 90%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 { 
+                font-size: 2em; 
+            }
+            
+            .header p { 
+                font-size: 1em; 
+            }
+            
+            .workflow-title {
+                font-size: 1.8em;
+            }
+            
+            .workflow-subtitle {
+                font-size: 1em;
+            }
+            
+            .workflow-container { 
+                padding: 20px 15px;
+                border-radius: 20px;
+            }
+            
+            svg { 
+                height: 500px;
+            }
+            
+            /* Scale UP SVG text for mobile readability */
+            /* Node titles - main labels */
+            .node text[font-size="20"] {
+                font-size: 26px;
+            }
+            
+            .node text[font-size="22"] {
+                font-size: 28px;
+            }
+            
+            .node text[font-size="18"] {
+                font-size: 24px;
+            }
+            
+            /* Node icons */
+            .node text[font-size="28"] {
+                font-size: 36px;
+            }
+            
+            .node text[font-size="32"] {
+                font-size: 40px;
+            }
+            
+            .node text[font-size="26"] {
+                font-size: 32px;
+            }
+            
+            /* Node descriptions and details */
+            .node text[font-size="14"] {
+                font-size: 18px;
+            }
+            
+            .node text[font-size="13"] {
+                font-size: 17px;
+            }
+            
+            .node text[font-size="12"] {
+                font-size: 16px;
+            }
+            
+            /* Stage labels */
+            .stage-label {
+                font-size: 24px;
+            }
+            
+            .stage-sublabel {
+                font-size: 18px;
+            }
+            
+            .demo-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            
+            .info-panel-icon {
+                font-size: 2.5em;
+            }
+            
+            .info-panel-title {
+                font-size: 1.6em;
+            }
+            
+            .info-panel-subtitle {
+                font-size: 1em;
+            }
+            
+            .info-section-title {
+                font-size: 1.3em;
+            }
+            
+            .info-section-content {
+                font-size: 1em;
+            }
+            
+            .example-box {
+                padding: 15px;
+            }
+            
+            .notification {
+                top: 60px;
+                padding: 15px 20px;
+            }
+            
+            .notification-header {
+                font-size: 1.2em;
+            }
+            
+            .notification-body {
+                font-size: 0.95em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 { 
+                font-size: 1.6em; 
+            }
+            
+            .header p { 
+                font-size: 0.9em;
+                padding: 0 10px;
+            }
+            
+            .workflow-title {
+                font-size: 1.4em;
+            }
+            
+            .workflow-subtitle {
+                font-size: 0.85em;
+                padding: 0 10px;
+            }
+            
+            .workflow-container {
+                padding: 15px 10px;
+            }
+            
+            svg { 
+                height: 400px;
+            }
+            
+            /* Further scale down for very small screens */
+            svg text {
+                font-size: 10px;
+            }
+            
+            svg .stage-label {
+                font-size: 14px;
+            }
+            
+            svg .stage-sublabel {
+                font-size: 10px;
+            }
+            
+            .demo-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                width: 95%;
+            }
+            
+            .info-panel {
+                padding: 20px;
+            }
+            
+            .close-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5em;
+            }
+            
+            .notification {
+                min-width: 95%;
+                padding: 12px 15px;
+                top: 50px;
+            }
+            
+            .notification-header {
+                font-size: 1.1em;
+                margin-bottom: 10px;
+            }
+            
+            .notification-body {
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .node {
+                cursor: pointer;
+                /* Larger touch targets */
+            }
+            
+            .node circle {
+                stroke-width: 6px;
+            }
+            
+            .demo-button {
+                padding: 15px 30px;
+                /* Larger touch targets for buttons */
+            }
+            
+            .close-btn {
+                width: 50px;
+                height: 50px;
+                /* Larger close button for touch */
+            }
+        }
+        
+        /* Landscape mobile optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            svg {
+                height: 450px;
+            }
+            
+            .header {
+                margin-bottom: 20px;
+            }
+            
+            .controls {
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* Very wide screens */
+        @media (min-width: 2000px) {
+            .container {
+                max-width: 2200px;
+            }
+            
+            svg {
+                height: 1000px;
             }
         }
     </style>
@@ -598,28 +963,28 @@
                 <text x="1550" y="50" class="stage-label">STAGE 4</text>
                 <text x="1550" y="75" class="stage-sublabel">System Creates Prices</text>
                 
-                <!-- Connection Lines - Properly positioned with curves -->
+                <!-- Connection Lines - Cleaned up and properly positioned -->
                 
-                <!-- Code to Product-Code Link -->
-                <path class="connection arrow" d="M 285 280 Q 450 320, 635 385" data-from="code" data-to="product-code-link" id="conn-1"/>
+                <!-- Code to Billing Permission -->
+                <path class="connection arrow" d="M 285 270 Q 450 300, 630 335" data-from="code" data-to="product-code-link" id="conn-1"/>
                 
-                <!-- Product to Product-Code Link -->
-                <path class="connection arrow" d="M 270 505 Q 450 450, 635 445" data-from="product" data-to="product-code-link" id="conn-2"/>
+                <!-- Product to Billing Permission -->
+                <path class="connection arrow" d="M 285 520 Q 450 420, 630 375" data-from="product" data-to="product-code-link" id="conn-2"/>
                 
-                <!-- Product-Code Link to Scenarios (STAGE 4 - longer arc) -->
-                <path class="connection arrow" d="M 820 395 Q 1100 350, 1445 420" data-from="product-code-link" data-to="scenarios" id="conn-3"/>
+                <!-- Billing Permission to Pricing Options (STAGE 4) -->
+                <path class="connection arrow" d="M 825 350 Q 1100 380, 1445 435" data-from="product-code-link" data-to="scenarios" id="conn-3"/>
                 
-                <!-- Product to Product-Vendor Link -->
-                <path class="connection arrow" d="M 285 590 Q 450 620, 635 655" data-from="product" data-to="product-vendor-link" id="conn-4"/>
+                <!-- Product to Supply Source -->
+                <path class="connection arrow" d="M 285 580 Q 450 610, 630 635" data-from="product" data-to="product-vendor-link" id="conn-4"/>
                 
-                <!-- Vendor to Product-Vendor Link -->
-                <path class="connection arrow" d="M 285 720 Q 450 700, 635 690" data-from="vendor" data-to="product-vendor-link" id="conn-5"/>
+                <!-- Vendor to Supply Source -->
+                <path class="connection arrow" d="M 285 720 Q 450 690, 630 665" data-from="vendor" data-to="product-vendor-link" id="conn-5"/>
                 
-                <!-- Product-Vendor Link to Unit (STAGE 3 - curved path) -->
-                <path class="connection arrow" d="M 810 650 Q 1000 590, 1155 570" data-from="product-vendor-link" data-to="unit" id="conn-6"/>
+                <!-- Supply Source to Unit (STAGE 3) -->
+                <path class="connection arrow" d="M 820 635 Q 1000 590, 1155 570" data-from="product-vendor-link" data-to="unit" id="conn-6"/>
                 
-                <!-- Unit to Scenarios (STAGE 3 to STAGE 4 - horizontal flow) -->
-                <path class="connection arrow" d="M 1350 530 Q 1420 480, 1445 460" data-from="unit" data-to="scenarios" id="conn-7"/>
+                <!-- Unit to Pricing Options (STAGE 3 to STAGE 4) -->
+                <path class="connection arrow" d="M 1345 525 Q 1420 480, 1445 465" data-from="unit" data-to="scenarios" id="conn-7"/>
                 
                 <!-- STAGE 1: Foundation (What You Add) -->
                 
@@ -684,40 +1049,42 @@
                 
                 <!-- Product-Code Link Node -->
                 <g class="node" data-id="product-code-link" onclick="showInfo('product-code-link')">
-                    <circle cx="725" cy="415" r="100" fill="url(#link-gradient)" stroke="#fff" stroke-width="5"/>
+                    <circle cx="725" cy="350" r="100" fill="url(#link-gradient)" stroke="#fff" stroke-width="5"/>
                     
                     <!-- Icon -->
-                    <text x="725" y="370" text-anchor="middle" fill="white" font-size="26" font-weight="700">🔗</text>
+                    <text x="725" y="305" text-anchor="middle" fill="white" font-size="26" font-weight="700">✅</text>
                     
                     <!-- Main Label -->
-                    <text x="725" y="400" text-anchor="middle" fill="white" font-size="18" font-weight="700">Billing Approval</text>
+                    <text x="725" y="335" text-anchor="middle" fill="white" font-size="18" font-weight="700">Billing</text>
+                    <text x="725" y="355" text-anchor="middle" fill="white" font-size="18" font-weight="700">Permission</text>
                     
                     <!-- Description -->
-                    <text x="725" y="422" text-anchor="middle" fill="white" font-size="13" font-weight="600">Product ↔ Code</text>
-                    <text x="725" y="440" text-anchor="middle" fill="white" font-size="12">"Can bill this way"</text>
+                    <text x="725" y="377" text-anchor="middle" fill="white" font-size="13" font-weight="600">Product ↔ Code</text>
+                    <text x="725" y="395" text-anchor="middle" fill="white" font-size="12">"Approved to bill"</text>
                     
                     <!-- Badge -->
-                    <rect x="670" y="455" width="110" height="28" rx="14" class="status-badge" fill="#f39c12"/>
-                    <text x="725" y="473" text-anchor="middle" class="status-icon" fill="white" font-size="13" font-weight="700">🔗 YOU LINK</text>
+                    <rect x="670" y="410" width="110" height="28" rx="14" class="status-badge" fill="#f39c12"/>
+                    <text x="725" y="428" text-anchor="middle" class="status-icon" fill="white" font-size="13" font-weight="700">🔗 YOU LINK</text>
                 </g>
                 
                 <!-- Product-Vendor Link Node -->
                 <g class="node" data-id="product-vendor-link" onclick="showInfo('product-vendor-link')">
-                    <circle cx="725" cy="675" r="100" fill="url(#link-gradient)" stroke="#fff" stroke-width="5"/>
+                    <circle cx="725" cy="650" r="100" fill="url(#link-gradient)" stroke="#fff" stroke-width="5"/>
                     
                     <!-- Icon -->
-                    <text x="725" y="630" text-anchor="middle" fill="white" font-size="26" font-weight="700">🔗</text>
+                    <text x="725" y="605" text-anchor="middle" fill="white" font-size="26" font-weight="700">📦</text>
                     
                     <!-- Main Label -->
-                    <text x="725" y="660" text-anchor="middle" fill="white" font-size="18" font-weight="700">Supply Source</text>
+                    <text x="725" y="635" text-anchor="middle" fill="white" font-size="18" font-weight="700">Supply</text>
+                    <text x="725" y="655" text-anchor="middle" fill="white" font-size="18" font-weight="700">Source</text>
                     
                     <!-- Description -->
-                    <text x="725" y="682" text-anchor="middle" fill="white" font-size="13" font-weight="600">Product ↔ Vendor</text>
-                    <text x="725" y="700" text-anchor="middle" fill="white" font-size="12">"Buy from them"</text>
+                    <text x="725" y="677" text-anchor="middle" fill="white" font-size="13" font-weight="600">Product ↔ Vendor</text>
+                    <text x="725" y="695" text-anchor="middle" fill="white" font-size="12">"Where we buy"</text>
                     
                     <!-- Badge -->
-                    <rect x="670" y="715" width="110" height="28" rx="14" class="status-badge" fill="#f39c12"/>
-                    <text x="725" y="733" text-anchor="middle" class="status-icon" fill="white" font-size="13" font-weight="700">🔗 YOU LINK</text>
+                    <rect x="670" y="710" width="110" height="28" rx="14" class="status-badge" fill="#f39c12"/>
+                    <text x="725" y="728" text-anchor="middle" class="status-icon" fill="white" font-size="13" font-weight="700">🔗 YOU LINK</text>
                 </g>
                 
                 <!-- STAGE 3: Units (What System Creates First) -->
@@ -838,7 +1205,7 @@
                 document.getElementById('conn-4').classList.add('inactive');
                 showNotification(
                     '🔗 STEP 2: Links Broken',
-                    '• Billing Approval → <strong>OFF ❌</strong><br>• Supply Source → <strong>OFF ❌</strong><br><br>Cannot bill or purchase this product anymore!'
+                    '• Billing Permission → <strong>OFF ❌</strong><br>• Supply Source → <strong>OFF ❌</strong><br><br>Cannot bill or purchase this product anymore!'
                 );
             }, 4500);
             
@@ -932,8 +1299,8 @@
                 impact: {
                     title: '⚠️ What Happens if You Turn This OFF?',
                     items: [
-                        '❌ Cannot create new "Billing Approvals" with this code',
-                        '❌ ALL existing Billing Approvals using this code turn OFF',
+                        '❌ Cannot create new "Billing Permissions" with this code',
+                        '❌ ALL existing Billing Permissions using this code turn OFF',
                         '❌ ALL Pricing Options using this code turn OFF',
                         '📊 Could affect 10-50+ pricing options',
                         '⚠️ Products using ONLY this code cannot be billed at all',
@@ -943,7 +1310,7 @@
                     ]
                 },
                 connections: [
-                    '➡️ You manually link this to Products to create "Billing Approvals"',
+                    '➡️ You manually link this to Products to create "Billing Permissions"',
                     '➡️ Used by Pricing Options to calculate insurance reimbursement',
                     '➡️ Determines how much money you receive from insurance'
                 ]
@@ -970,7 +1337,7 @@
                 impact: {
                     title: '🚨 CRITICAL: What Happens if You Turn This OFF?',
                     items: [
-                        '❌ ALL Billing Approvals for this product turn OFF',
+                        '❌ ALL Billing Permissions for this product turn OFF',
                         '❌ ALL Supply Sources for this product turn OFF',
                         '❌ ALL Units of this product turn OFF',
                         '❌ ALL Pricing Options for this product turn OFF',
@@ -981,7 +1348,7 @@
                     ]
                 },
                 connections: [
-                    'You link this to Codes to create "Billing Approvals"',
+                    'You link this to Codes to create "Billing Permissions"',
                     'You link this to Vendors to create "Supply Sources"',
                     'Central hub that connects billing and supply chains'
                 ]
@@ -1027,14 +1394,14 @@
                 ]
             },
             'product-code-link': {
-                icon: '🔗',
-                title: 'Billing Approval',
+                icon: '✅',
+                title: 'Billing Permission',
                 subtitle: 'Product approved for billing code',
                 category: 'YOU CREATE THIS',
                 description: 'This connection says "this product can be billed under this insurance code." You create this manually after verifying that the product meets the code\'s requirements and insurance will accept claims.',
                 example: {
-                    title: '🔗 Real Example',
-                    content: `<strong>Link Created:</strong> Knee Brace Standard → Code L1843<br><br>
+                    title: '✅ Real Example',
+                    content: `<strong>Permission Created:</strong> Knee Brace Standard → Code L1843<br><br>
                     <strong>What this means:</strong><br>
                     "We can bill insurance companies using code L1843 when we sell this knee brace."<br><br>
                     <strong>Why you create this:</strong><br>
@@ -1045,7 +1412,7 @@
                 },
                 legend: {
                     title: '📖 What This Means',
-                    content: 'A billing link tells your system "yes, we can legally and properly bill this product under this code." Without this link, you cannot bill insurance for that product-code combination, even if both exist in your system.'
+                    content: 'A billing permission tells your system "yes, we can legally and properly bill this product under this code." Without this permission, you cannot bill insurance for that product-code combination, even if both exist in your system.'
                 },
                 impact: {
                     title: '⚠️ What Happens if You Turn This OFF?',
@@ -1054,7 +1421,7 @@
                         '❌ ALL Pricing Options for this product-code combo turn OFF',
                         '📊 Affects 4-20 pricing options (one per vendor)',
                         '⚠️ If this was product\'s ONLY billing code, product cannot be billed!',
-                        '💡 Need alternative code or reactivate this link',
+                        '💡 Need alternative code or reactivate this permission',
                         '📧 Notify sales team which scenarios are no longer valid'
                     ]
                 },
@@ -1065,14 +1432,14 @@
                 ]
             },
             'product-vendor-link': {
-                icon: '🔗',
+                icon: '📦',
                 title: 'Supply Source',
                 subtitle: 'Vendor supplies this product',
                 category: 'YOU CREATE THIS',
                 description: 'This connection says "we buy this product from this vendor at this cost." You create this manually and enter the negotiated cost per unit. This triggers automatic Unit creation.',
                 example: {
-                    title: '🔗 Real Example',
-                    content: `<strong>Link Created:</strong> Knee Brace Standard ← Vendor A<br><br>
+                    title: '📦 Real Example',
+                    content: `<strong>Source Created:</strong> Knee Brace Standard ← Vendor A<br><br>
                     <strong>Details you enter:</strong><br>
                     • Cost: $45 per unit<br>
                     • MOQ: 50 units minimum<br>
@@ -1086,7 +1453,7 @@
                 },
                 legend: {
                     title: '📖 What This Means',
-                    content: 'A supply link connects your product catalog to your supplier relationships. It establishes cost, which is critical for calculating profit margins. This link triggers the entire automation chain that creates your pricing options.'
+                    content: 'A supply source connects your product catalog to your supplier relationships. It establishes cost, which is critical for calculating profit margins. This source triggers the entire automation chain that creates your pricing options.'
                 },
                 impact: {
                     title: '⚠️ What Happens if You Turn This OFF?',
@@ -1112,7 +1479,7 @@
                 title: 'Unit',
                 subtitle: 'Specific product from specific vendor',
                 category: 'AUTO-CREATED BY SYSTEM',
-                description: 'The system automatically creates a Unit when you make a Supply Source. A Unit represents one specific product from one specific vendor at a specific cost. It\'s the building block for pricing options.',
+                description: 'The system automatically creates a Unit when you make a Supply Link. A Unit represents one specific product from one specific vendor at a specific cost. It\'s the building block for pricing options.',
                 example: {
                     title: '🎯 Real Example',
                     content: `<strong>Unit Created:</strong> "Knee Brace Standard - Vendor A"<br><br>
@@ -1145,7 +1512,7 @@
                 },
                 connections: [
                     'Created by: Supply Source (automatic)',
-                    'Combined with: Billing Approvals',
+                    'Combined with: Billing Permissions',
                     'Creates: Pricing Options (one per billing code)',
                     'Provides: Cost for profit calculations'
                 ]
@@ -1197,7 +1564,7 @@
                     ]
                 },
                 connections: [
-                    'Created from: Unit + Billing Approval',
+                    'Created from: Unit + Billing Permission',
                     'Shows: Complete pricing with profit margins',
                     'Used by: Sales team for customer quotes',
                     'Updated: Automatically when costs or rates change'
