@@ -690,7 +690,7 @@
                     <text x="725" y="370" text-anchor="middle" fill="white" font-size="26" font-weight="700">🔗</text>
                     
                     <!-- Main Label -->
-                    <text x="725" y="400" text-anchor="middle" fill="white" font-size="18" font-weight="700">Billing Link</text>
+                    <text x="725" y="400" text-anchor="middle" fill="white" font-size="18" font-weight="700">Billing Approval</text>
                     
                     <!-- Description -->
                     <text x="725" y="422" text-anchor="middle" fill="white" font-size="13" font-weight="600">Product ↔ Code</text>
@@ -709,7 +709,7 @@
                     <text x="725" y="630" text-anchor="middle" fill="white" font-size="26" font-weight="700">🔗</text>
                     
                     <!-- Main Label -->
-                    <text x="725" y="660" text-anchor="middle" fill="white" font-size="18" font-weight="700">Supply Link</text>
+                    <text x="725" y="660" text-anchor="middle" fill="white" font-size="18" font-weight="700">Supply Source</text>
                     
                     <!-- Description -->
                     <text x="725" y="682" text-anchor="middle" fill="white" font-size="13" font-weight="600">Product ↔ Vendor</text>
@@ -838,7 +838,7 @@
                 document.getElementById('conn-4').classList.add('inactive');
                 showNotification(
                     '🔗 STEP 2: Links Broken',
-                    '• Billing Link → <strong>OFF ❌</strong><br>• Supply Link → <strong>OFF ❌</strong><br><br>Cannot bill or purchase this product anymore!'
+                    '• Billing Approval → <strong>OFF ❌</strong><br>• Supply Source → <strong>OFF ❌</strong><br><br>Cannot bill or purchase this product anymore!'
                 );
             }, 4500);
             
@@ -932,8 +932,8 @@
                 impact: {
                     title: '⚠️ What Happens if You Turn This OFF?',
                     items: [
-                        '❌ Cannot create new "Billing Links" with this code',
-                        '❌ ALL existing Billing Links using this code turn OFF',
+                        '❌ Cannot create new "Billing Approvals" with this code',
+                        '❌ ALL existing Billing Approvals using this code turn OFF',
                         '❌ ALL Pricing Options using this code turn OFF',
                         '📊 Could affect 10-50+ pricing options',
                         '⚠️ Products using ONLY this code cannot be billed at all',
@@ -943,7 +943,7 @@
                     ]
                 },
                 connections: [
-                    '➡️ You manually link this to Products to create "Billing Links"',
+                    '➡️ You manually link this to Products to create "Billing Approvals"',
                     '➡️ Used by Pricing Options to calculate insurance reimbursement',
                     '➡️ Determines how much money you receive from insurance'
                 ]
@@ -970,8 +970,8 @@
                 impact: {
                     title: '🚨 CRITICAL: What Happens if You Turn This OFF?',
                     items: [
-                        '❌ ALL Billing Links for this product turn OFF',
-                        '❌ ALL Supply Links for this product turn OFF',
+                        '❌ ALL Billing Approvals for this product turn OFF',
+                        '❌ ALL Supply Sources for this product turn OFF',
                         '❌ ALL Units of this product turn OFF',
                         '❌ ALL Pricing Options for this product turn OFF',
                         '🚨 MASSIVE IMPACT: Could affect 20-100+ pricing options!',
@@ -981,8 +981,8 @@
                     ]
                 },
                 connections: [
-                    'You link this to Codes to create "Billing Links"',
-                    'You link this to Vendors to create "Supply Links"',
+                    'You link this to Codes to create "Billing Approvals"',
+                    'You link this to Vendors to create "Supply Sources"',
                     'Central hub that connects billing and supply chains'
                 ]
             },
@@ -1010,7 +1010,7 @@
                 impact: {
                     title: '🚨 MASSIVE IMPACT: What Happens if You Turn This OFF?',
                     items: [
-                        '❌ ALL Supply Links with this vendor turn OFF',
+                        '❌ ALL Supply Sources with this vendor turn OFF',
                         '❌ ALL Units from this vendor turn OFF',
                         '❌ ALL Pricing Options using this vendor turn OFF',
                         '🚨 ENORMOUS IMPACT: Could affect 100-500+ pricing options!',
@@ -1021,14 +1021,14 @@
                     ]
                 },
                 connections: [
-                    'You link this to Products to create "Supply Links"',
+                    'You link this to Products to create "Supply Sources"',
                     'Determines costs used in all profit calculations',
                     'Critical for supply chain management'
                 ]
             },
             'product-code-link': {
                 icon: '🔗',
-                title: 'Billing Link',
+                title: 'Billing Approval',
                 subtitle: 'Product approved for billing code',
                 category: 'YOU CREATE THIS',
                 description: 'This connection says "this product can be billed under this insurance code." You create this manually after verifying that the product meets the code\'s requirements and insurance will accept claims.',
@@ -1066,7 +1066,7 @@
             },
             'product-vendor-link': {
                 icon: '🔗',
-                title: 'Supply Link',
+                title: 'Supply Source',
                 subtitle: 'Vendor supplies this product',
                 category: 'YOU CREATE THIS',
                 description: 'This connection says "we buy this product from this vendor at this cost." You create this manually and enter the negotiated cost per unit. This triggers automatic Unit creation.',
@@ -1112,7 +1112,7 @@
                 title: 'Unit',
                 subtitle: 'Specific product from specific vendor',
                 category: 'AUTO-CREATED BY SYSTEM',
-                description: 'The system automatically creates a Unit when you make a Supply Link. A Unit represents one specific product from one specific vendor at a specific cost. It\'s the building block for pricing options.',
+                description: 'The system automatically creates a Unit when you make a Supply Source. A Unit represents one specific product from one specific vendor at a specific cost. It\'s the building block for pricing options.',
                 example: {
                     title: '🎯 Real Example',
                     content: `<strong>Unit Created:</strong> "Knee Brace Standard - Vendor A"<br><br>
@@ -1139,13 +1139,13 @@
                         '❌ ALL Pricing Options using this unit turn OFF',
                         '📊 Affects 4-10 pricing options (one per billing code)',
                         '✅ Other vendors\' units still work (isolated impact)',
-                        'ℹ️ Usually turns OFF automatically when Supply Link turns OFF',
-                        '💡 To fix: Reactivate the Supply Link'
+                        'ℹ️ Usually turns OFF automatically when Supply Source turns OFF',
+                        '💡 To fix: Reactivate the Supply Source'
                     ]
                 },
                 connections: [
-                    'Created by: Supply Link (automatic)',
-                    'Combined with: Billing Links',
+                    'Created by: Supply Source (automatic)',
+                    'Combined with: Billing Approvals',
                     'Creates: Pricing Options (one per billing code)',
                     'Provides: Cost for profit calculations'
                 ]
@@ -1197,7 +1197,7 @@
                     ]
                 },
                 connections: [
-                    'Created from: Unit + Billing Link',
+                    'Created from: Unit + Billing Approval',
                     'Shows: Complete pricing with profit margins',
                     'Used by: Sales team for customer quotes',
                     'Updated: Automatically when costs or rates change'
