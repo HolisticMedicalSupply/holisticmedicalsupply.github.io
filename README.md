@@ -794,17 +794,53 @@
                 height: 400px;
             }
             
-            /* Further scale down for very small screens */
-            svg text {
-                font-size: 10px;
+            /* Scale UP SVG text for small mobile readability */
+            /* Node titles - main labels */
+            .node text[font-size="20"] {
+                font-size: 28px;
             }
             
-            svg .stage-label {
-                font-size: 14px;
+            .node text[font-size="22"] {
+                font-size: 30px;
             }
             
-            svg .stage-sublabel {
-                font-size: 10px;
+            .node text[font-size="18"] {
+                font-size: 26px;
+            }
+            
+            /* Node icons */
+            .node text[font-size="28"] {
+                font-size: 38px;
+            }
+            
+            .node text[font-size="32"] {
+                font-size: 42px;
+            }
+            
+            .node text[font-size="26"] {
+                font-size: 34px;
+            }
+            
+            /* Node descriptions and details */
+            .node text[font-size="14"] {
+                font-size: 20px;
+            }
+            
+            .node text[font-size="13"] {
+                font-size: 19px;
+            }
+            
+            .node text[font-size="12"] {
+                font-size: 18px;
+            }
+            
+            /* Stage labels */
+            .stage-label {
+                font-size: 26px;
+            }
+            
+            .stage-sublabel {
+                font-size: 20px;
             }
             
             .demo-button {
