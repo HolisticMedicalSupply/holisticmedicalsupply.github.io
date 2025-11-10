@@ -15,11 +15,7 @@
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
@@ -318,6 +314,182 @@
             color: var(--card-color-start);
             font-weight: bold;
             font-size: 18px;
+        }
+
+        /* ============== RESPONSIVE DESIGN ============== */
+
+        /* Tablet styles (768px and below) */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 25px 20px;
+            }
+
+            .company-name {
+                font-size: 32px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            .logo-container {
+                gap: 20px;
+            }
+
+            .logo-container img {
+                max-width: 100px;
+            }
+
+            .boc-bar {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 20px;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .intro {
+                padding: 30px 20px;
+            }
+
+            .intro h2 {
+                font-size: 26px;
+            }
+
+            .intro p {
+                font-size: 16px;
+            }
+
+            .catalog-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .catalog-card {
+                padding: 20px;
+            }
+
+            .catalog-card h3 {
+                font-size: 20px;
+            }
+
+            .roadmap-section {
+                padding: 30px 20px;
+            }
+
+            .roadmap-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer {
+                padding: 20px;
+                font-size: 13px;
+            }
+        }
+
+        /* Mobile styles (480px and below) */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo-container img {
+                max-width: 80px;
+            }
+
+            .company-name {
+                font-size: 24px;
+            }
+
+            .tagline {
+                font-size: 14px;
+            }
+
+            .boc-bar {
+                grid-template-columns: 1fr;
+                margin: 15px;
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .boc-label {
+                font-size: 10px;
+            }
+
+            .boc-value {
+                font-size: 14px;
+            }
+
+            .intro {
+                padding: 20px 15px;
+            }
+
+            .intro h2 {
+                font-size: 22px;
+            }
+
+            .intro p {
+                font-size: 15px;
+            }
+
+            .catalog-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .catalog-card {
+                padding: 18px;
+            }
+
+            .catalog-card h3 {
+                font-size: 18px;
+            }
+
+            .catalog-card li {
+                font-size: 14px;
+            }
+
+            .catalog-card a {
+                display: block;
+                text-align: center;
+                padding: 12px 20px;
+            }
+
+            .roadmap-section {
+                padding: 20px 15px;
+            }
+
+            .roadmap-header h2 {
+                font-size: 22px;
+            }
+
+            .roadmap-card h3 {
+                font-size: 18px;
+            }
+
+            .roadmap-card li {
+                font-size: 14px;
+            }
+
+            .footer {
+                padding: 15px;
+                font-size: 12px;
+            }
         }
 
         @media print {
