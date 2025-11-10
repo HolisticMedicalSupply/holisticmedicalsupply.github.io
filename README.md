@@ -358,7 +358,7 @@
         </div>
         
         <div class="intro">
-            <h2>Professional Product Catalog for Physicians</h2>
+            <h2>Product Catalog for Physicians (HCPCS Codes)</h2>
             <p><strong>Complete HCPCS Code Reference</strong></p>
             <p>Our comprehensive catalog is organized by equipment category for easy reference. Each section includes product names and HCPCS codes for quick reference.</p>
             <p><strong>Select a category below to view the complete product catalog:</strong></p>
