@@ -188,7 +188,138 @@
         .footer strong {
             color: #1e5a96;
         }
-        
+
+        /* ============== ROADMAP SECTION ============== */
+        .roadmap-section {
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-top: 3px solid #2a6fb8;
+            border-bottom: 3px solid #2a6fb8;
+        }
+
+        .roadmap-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-header h2 {
+            font-size: 36px;
+            color: #1e5a96;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .roadmap-header p {
+            font-size: 18px;
+            color: #555;
+            font-style: italic;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .roadmap-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--card-color-start), var(--card-color-end));
+        }
+
+        .roadmap-card.today {
+            --card-color-start: #27ae60;
+            --card-color-end: #2ecc71;
+        }
+
+        .roadmap-card.month-30 {
+            --card-color-start: #1e5a96;
+            --card-color-end: #2a6fb8;
+        }
+
+        .roadmap-card.month-60-90 {
+            --card-color-start: #8e44ad;
+            --card-color-end: #9b59b6;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .roadmap-card.today .timeline-badge {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .roadmap-card.month-30 .timeline-badge {
+            background: linear-gradient(135deg, #1e5a96, #2a6fb8);
+        }
+
+        .roadmap-card.month-60-90 .timeline-badge {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+        }
+
+        .roadmap-card h3 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .roadmap-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .roadmap-card li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .roadmap-card li:last-child {
+            border-bottom: none;
+        }
+
+        .roadmap-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--card-color-start);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
         @media print {
             body { background: white; padding: 0; }
             .catalog-card:hover { transform: none; }
@@ -320,15 +451,71 @@
                 <a href="catalog_specialized.html">View Catalog →</a>
             </div>
         </div>
-        
+
+        <!-- ============== SERVICES ROADMAP ============== -->
+        <div class="roadmap-section">
+            <div class="roadmap-header">
+                <h2>🚀 Our Services Roadmap</h2>
+                <p>Building the future of DME delivery - faster, smarter, more accessible</p>
+            </div>
+
+            <div class="roadmap-grid">
+                <!-- Services Today -->
+                <div class="roadmap-card today">
+                    <span class="timeline-badge">✓ AVAILABLE TODAY</span>
+                    <h3>Current Services</h3>
+                    <ul>
+                        <li>7-day delivery on special orders</li>
+                        <li>2-day delivery on in-stock orders</li>
+                        <li>Free delivery within service area</li>
+                        <li>Medicare/Medicaid + Cash payments</li>
+                        <li>Order via Fax, Email, or Phone</li>
+                        <li>VGM GPO member - comprehensive inventory</li>
+                        <li>Licensed & accredited DME supplier</li>
+                    </ul>
+                </div>
+
+                <!-- In 30 Days -->
+                <div class="roadmap-card month-30">
+                    <span class="timeline-badge">📅 WITHIN 30 DAYS</span>
+                    <h3>Coming Soon</h3>
+                    <ul>
+                        <li>Improved in-stock inventory</li>
+                        <li>Parachute Health Portal e-prescribing</li>
+                        <li>Next-day delivery on in-stock orders</li>
+                        <li>Online order tracking portal</li>
+                        <li>Automated insurance verification</li>
+                        <li>Digital intake forms</li>
+                    </ul>
+                </div>
+
+                <!-- In 60-90+ Days -->
+                <div class="roadmap-card month-60-90">
+                    <span class="timeline-badge">🎯 60-90+ DAYS</span>
+                    <h3>Future Expansion</h3>
+                    <ul>
+                        <li>Additional insurance payers</li>
+                        <li>Additional product categories (CPAP, etc.)</li>
+                        <li>Same-day delivery on in-stock orders</li>
+                        <li>24/7 online ordering platform</li>
+                        <li>EMR/EHR integrations</li>
+                        <li>Expanded service area coverage</li>
+                        <li>Provider portal for order management</li>
+                        <li>Patient education portal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="footer">
             <div style="font-size: 16pt; font-weight: bold; margin-bottom: 15px; color: #1e5a96;">
                 📞 CONTACT INFORMATION
             </div>
             <div style="margin-bottom: 15px;">
                 <strong>Address:</strong> 1170 Port Washington Blvd, Port Washington, NY 11050<br>
-                <strong>Phone:</strong> +1 516-810-26-33 • <strong>Fax:</strong> +1 516-268-96-79<br>
-                <strong>Email:</strong> holistic766@gmail.com
+                <strong>Phone:</strong> 516-386-3343 • <strong>Fax:</strong> 363-999-0019<br>
+                <strong>Orders:</strong> orders@holisticmedical.supply<br>
+                <strong>Support:</strong> support@holisticmedical.supply
             </div>
             <div style="font-size: 12px; color: #666; margin-top: 15px;">
                 <strong>SERVICE AREA:</strong> NYC • Brooklyn • Staten Island • Port Washington • Nassau County<br>
